@@ -1,18 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/softwares", label: "Softwares" },
+  { href: "https://www.doublethinking.ai", label: "Company", external: true },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -29,25 +32,42 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
-        <a href="#" className="font-semibold text-foreground">
+        <Link href="/" className="font-semibold text-foreground">
           Aaron Yang
-        </a>
+        </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md px-3 py-1.5 text-sm text-muted transition-colors hover:text-foreground"
+              >
+                {link.label}
+                <span className="ml-0.5 text-[10px]">↗</span>
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                  pathname === link.href
+                    ? "font-medium text-accent"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md bg-accent px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            className="ml-2 rounded-md bg-accent px-3.5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
           >
             Resume
           </a>
@@ -70,22 +90,38 @@ export default function Header() {
 
       {mobileOpen && (
         <nav className="border-t border-border bg-card px-6 py-3 md:hidden">
-          <div className="flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm text-muted transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
+                >
+                  {link.label} <span className="text-[10px]">↗</span>
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                    pathname === link.href
+                      ? "font-medium text-accent"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 rounded-md bg-accent px-3.5 py-1.5 text-center text-sm font-medium text-white"
+              className="mt-1 rounded-md bg-accent px-3.5 py-2 text-center text-sm font-medium text-white"
             >
               Resume
             </a>
