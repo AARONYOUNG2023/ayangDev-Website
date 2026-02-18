@@ -3,6 +3,20 @@ import FadeIn from "@/components/FadeIn";
 
 const experiences = [
   {
+    role: "Founder",
+    company: "DoubleThinking LLC",
+    location: "Washington, DC",
+    period: "Mar 2025 — Present",
+    link: "https://www.doublethinking.ai",
+    bullets: [
+      "Founded an AI consulting firm designing, building, and deploying production-grade AI systems for businesses nationwide",
+      "Deliver AI customer support solutions with intelligent conversational agents that manage tickets and inquiries while maintaining brand voice consistency",
+      "Build AI system integrations embedding AI capabilities into existing business infrastructure, connecting CRMs and internal tools through automated pipelines",
+      "Design data and automation workflows including ETL pipelines and document processing systems that convert unstructured data into actionable insights",
+      "Lead end-to-end project delivery from discovery and workflow auditing through rapid prototyping, production implementation, and ongoing optimization",
+    ],
+  },
+  {
     role: "AI Software Designer",
     company: "Accredited Labs",
     location: "Dallas, TX (Remote)",
@@ -125,7 +139,13 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-semibold text-foreground">{exp.role}</h3>
                     <p className="text-sm text-accent">
-                      {exp.company}
+                      {exp.link ? (
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {exp.company}
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
                       <span className="text-muted"> &mdash; {exp.location}</span>
                     </p>
                   </div>
