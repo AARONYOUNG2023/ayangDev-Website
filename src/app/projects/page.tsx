@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import FadeIn from "@/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "Projects",
+};
 
 const projects = [
   {

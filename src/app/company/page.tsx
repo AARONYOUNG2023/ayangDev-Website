@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import SectionHeading from "@/components/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Company",
+};
 
 const services = [
   {

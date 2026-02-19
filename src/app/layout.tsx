@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aaron Yang | Data Scientist & AI Engineer",
+  title: {
+    default: "Aaron Yang | Data Scientist & AI Engineer",
+    template: "%s | Aaron Yang",
+  },
   description:
     "Personal portfolio of Yongpu (Aaron) Yang — Data Scientist, AI Software Designer, and ML Engineer.",
 };

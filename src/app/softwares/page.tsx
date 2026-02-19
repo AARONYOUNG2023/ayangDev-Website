@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
+
+export const metadata: Metadata = {
+  title: "Softwares",
+};
 
 const softwares = [
   {

@@ -45,6 +45,22 @@ export default function Home() {
             pipelines, and intelligent automation. Currently designing software at
             Accredited Labs.
           </p>
+          <div className="mt-6 flex gap-3">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            >
+              View Resume
+            </a>
+            <Link
+              href="/contact"
+              className="rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-border"
+            >
+              Get in Touch
+            </Link>
+          </div>
         </section>
       </FadeIn>
 
