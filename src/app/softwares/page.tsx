@@ -56,7 +56,7 @@ export default function SoftwaresPage() {
             <div className="rounded-lg border border-border bg-card p-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <h3 className="font-semibold text-foreground">{sw.name}</h3>
-                <span className="inline-flex shrink-0 items-center rounded-full border border-green-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-700">
+                <span className="inline-flex shrink-0 items-center rounded-full border border-green-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
                   {sw.status}
                 </span>
               </div>

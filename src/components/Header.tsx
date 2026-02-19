@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -58,10 +59,13 @@ export default function Header() {
           >
             Resume
           </a>
+          <ThemeToggle />
         </nav>
 
-        <button
-          className="p-1 md:hidden"
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="p-1"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -72,7 +76,8 @@ export default function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
-        </button>
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
