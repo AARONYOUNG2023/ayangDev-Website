@@ -8,7 +8,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/softwares", label: "Softwares" },
-  { href: "https://www.doublethinking.ai", label: "Company", external: true },
+  { href: "/company", label: "Company" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -37,32 +37,19 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md px-3 py-1.5 text-sm text-muted transition-colors hover:text-foreground"
-              >
-                {link.label}
-                <span className="ml-0.5 text-[10px]">↗</span>
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
-                  pathname === link.href
-                    ? "font-medium text-accent"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+                pathname === link.href
+                  ? "font-medium text-accent"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
           <a
             href="/resume.pdf"
             target="_blank"
@@ -91,32 +78,20 @@ export default function Header() {
       {mobileOpen && (
         <nav className="border-t border-border bg-card px-6 py-3 md:hidden">
           <div className="flex flex-col gap-1">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
-                >
-                  {link.label} <span className="text-[10px]">↗</span>
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`rounded-md px-3 py-2 text-sm transition-colors ${
-                    pathname === link.href
-                      ? "font-medium text-accent"
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                  pathname === link.href
+                    ? "font-medium text-accent"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href="/resume.pdf"
               target="_blank"
