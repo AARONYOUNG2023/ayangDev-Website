@@ -14,32 +14,11 @@ const softwares = [
     tech: ["Python", "LLMs", "FastAPI"],
   },
   {
-    name: "Certificate Validation System",
+    name: "LogoSpark",
     description:
-      "Processes 170,000+ calibration records for ISO/IEC 17025 compliance. Automates QC workflows and technician certification validation.",
-    status: "Production",
-    tech: ["Python", "BigQuery", "Google Cloud Storage"],
-  },
-  {
-    name: "Cubyt Equipment Scraper",
-    description:
-      "Automated web scraper extracting 700,000+ equipment records from Cubyt database. Runs on Google Cloud VM with scheduled execution.",
-    status: "Production",
-    tech: ["Python", "Selenium", "BeautifulSoup", "GCP"],
-  },
-  {
-    name: "IndySoft BI Dashboard",
-    description:
-      "Real-time analytics dashboard for calibration data. Integrates IndySoft database with BigQuery for multi-branch reporting and certificate extraction.",
-    status: "Production",
-    tech: ["Streamlit", "BigQuery", "Python"],
-  },
-  {
-    name: "ETL Pipeline Suite",
-    description:
-      "Data pipelines consolidating multi-branch calibration data. Enables real-time reporting and one-click invoice generation.",
-    status: "Production",
-    tech: ["Python", "BigQuery", "Google Cloud"],
+      "AI-powered logo design tool that helps users create logos for organizations, companies, and teams. Generates custom logo concepts using AI image generation.",
+    status: "In Development",
+    tech: ["Next.js", "AI API"],
   },
 ];
 
@@ -61,7 +40,7 @@ export default function SoftwaresPage() {
             <div className="rounded-lg border border-border bg-card p-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <h3 className="font-semibold text-foreground">{sw.name}</h3>
-                <span className="inline-flex shrink-0 items-center rounded-full border border-green-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+                <span className={`inline-flex shrink-0 items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${sw.status === "Production" ? "border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400" : "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-400"}`}>
                   {sw.status}
                 </span>
               </div>
